@@ -1,13 +1,9 @@
 import mongoose from 'mongoose'
 
-interface ITodo {
-  id: string;
-  title: string;
-  description: string;
-}
-
-interface todoModelInterface extends mongoose.Model<TodoDoc> {
-  build(attr: ITodo): TodoDoc
+class TodoClass {
+  id: string = "";
+  title: string = "";
+  description: string = "";
 }
 
 interface TodoDoc extends mongoose.Document {
@@ -31,11 +27,7 @@ const todoSchema = new mongoose.Schema({
     }
 })
 
-todoSchema.statics.build = (attr: ITodo) => {
-  return new Todo(attr)
-}
-
-const Todo = mongoose.model<TodoDoc, todoModelInterface>('Todo', todoSchema)
+const Todo = mongoose.model<TodoDoc>('Todo', todoSchema)
 
 
-export { Todo }
+export { Todo, TodoClass }
