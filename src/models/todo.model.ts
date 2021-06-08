@@ -25,9 +25,11 @@ const todoSchema = new mongoose.Schema({
         type: String, 
         required: true
     }
-})
+}, {collection: 'todos'})
+
 
 const Todo = mongoose.model<TodoDoc>('Todo', todoSchema)
+
 
 
 export { Todo, TodoClass }
